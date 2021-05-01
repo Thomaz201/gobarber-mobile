@@ -145,14 +145,19 @@ const CreateAppointmet: React.FC = () => {
         date,
       });
 
-      navigate('AppointmentCreated', { date: date.getTime() });
+      navigate('AppointmentCreated', {
+        date: date.getTime(),
+        provider: providers.find(
+          (provider) => provider.id === selectedProvider,
+        ),
+      });
     } catch (error) {
       Alert.alert(
         'Erro ao criar agendamento',
         'Ocorreu um erro ao tentar criar um agendamento, tente novamente.',
       );
     }
-  }, [navigate, selectedDate, selectedHour, selectedProvider]);
+  }, [navigate, selectedDate, selectedHour, selectedProvider, providers]);
 
   return (
     <Container>
